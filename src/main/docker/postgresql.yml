@@ -1,0 +1,11 @@
+version: '2'
+services:
+    myapptest-postgresql:
+        image: postgres:9.6.5
+        # volumes:
+        #     - ~/volumes/jhipster/myapptest/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=myapptest
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432
