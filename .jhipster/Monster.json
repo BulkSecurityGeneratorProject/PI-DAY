@@ -7,11 +7,31 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "monsterid",
+            "fieldType": "integer"
+        },
+        {
             "fieldName": "pageNo",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "challenge",
+            "fieldType": "number"
+        },
+        {
+            "fieldName": "environment",
+            "fieldType": "integer"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "size",
+            "fieldType": "String"
         }
     ],
-    "changelogDate": "20180314222310",
+    "changelogDate": "20180402152310",
     "dto": "no",
     "service": "serviceImpl",
     "entityTableName": "monster",
