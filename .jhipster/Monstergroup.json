@@ -1,0 +1,20 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "monsters",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "user",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180402223111",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "monstergroup",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
