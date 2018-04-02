@@ -2,6 +2,7 @@ package com.mycompany.myapp.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -25,6 +26,10 @@ public class Monster implements Serializable {
 
     @Column(name = "page_no")
     private Integer pageNo;
+
+    @NotNull
+    @Column(name = "monster_id", nullable = false)
+    private Integer monsterID;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -60,6 +65,19 @@ public class Monster implements Serializable {
     public void setPageNo(Integer pageNo) {
         this.pageNo = pageNo;
     }
+
+    public Integer getMonsterID() {
+        return monsterID;
+    }
+
+    public Monster monsterID(Integer monsterID) {
+        this.monsterID = monsterID;
+        return this;
+    }
+
+    public void setMonsterID(Integer monsterID) {
+        this.monsterID = monsterID;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -88,6 +106,7 @@ public class Monster implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", pageNo=" + getPageNo() +
+            ", monsterID=" + getMonsterID() +
             "}";
     }
 }
