@@ -18,7 +18,7 @@
             ]
         }
     ],
-    "changelogDate": "20180318222310",
+    "changelogDate": "20180314222310",
     "dto": "no",
     "service": "serviceImpl",
     "entityTableName": "monster",
