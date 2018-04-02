@@ -9,6 +9,13 @@
         {
             "fieldName": "pageNo",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "monsterID",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20180318222310",

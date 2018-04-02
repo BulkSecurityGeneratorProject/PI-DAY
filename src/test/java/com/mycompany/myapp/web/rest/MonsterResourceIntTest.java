@@ -45,6 +45,9 @@ public class MonsterResourceIntTest {
     private static final Integer DEFAULT_PAGE_NO = 1;
     private static final Integer UPDATED_PAGE_NO = 2;
 
+    private static final Integer DEFAULT_MONSTER_ID = 1;
+    private static final Integer UPDATED_MONSTER_ID = 2;
+
     @Autowired
     private MonsterRepository monsterRepository;
 
@@ -87,7 +90,8 @@ public class MonsterResourceIntTest {
     public static Monster createEntity(EntityManager em) {
         Monster monster = new Monster()
             .name(DEFAULT_NAME)
-            .pageNo(DEFAULT_PAGE_NO);
+            .pageNo(DEFAULT_PAGE_NO)
+            .monsterID(DEFAULT_MONSTER_ID);
         return monster;
     }
 
@@ -113,6 +117,7 @@ public class MonsterResourceIntTest {
         Monster testMonster = monsterList.get(monsterList.size() - 1);
         assertThat(testMonster.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testMonster.getPageNo()).isEqualTo(DEFAULT_PAGE_NO);
+        assertThat(testMonster.getMonsterID()).isEqualTo(DEFAULT_MONSTER_ID);
     }
 
     @Test
@@ -136,6 +141,24 @@ public class MonsterResourceIntTest {
 
     @Test
     @Transactional
+    public void checkMonsterIDIsRequired() throws Exception {
+        int databaseSizeBeforeTest = monsterRepository.findAll().size();
+        // set the field null
+        monster.setMonsterID(null);
+
+        // Create the Monster, which fails.
+
+        restMonsterMockMvc.perform(post("/api/monsters")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(monster)))
+            .andExpect(status().isBadRequest());
+
+        List<Monster> monsterList = monsterRepository.findAll();
+        assertThat(monsterList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllMonsters() throws Exception {
         // Initialize the database
         monsterRepository.saveAndFlush(monster);
@@ -146,7 +169,8 @@ public class MonsterResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(monster.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].pageNo").value(hasItem(DEFAULT_PAGE_NO)));
+            .andExpect(jsonPath("$.[*].pageNo").value(hasItem(DEFAULT_PAGE_NO)))
+            .andExpect(jsonPath("$.[*].monsterID").value(hasItem(DEFAULT_MONSTER_ID)));
     }
 
     @Test
@@ -161,7 +185,8 @@ public class MonsterResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(monster.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.pageNo").value(DEFAULT_PAGE_NO));
+            .andExpect(jsonPath("$.pageNo").value(DEFAULT_PAGE_NO))
+            .andExpect(jsonPath("$.monsterID").value(DEFAULT_MONSTER_ID));
     }
 
     @Test
@@ -186,7 +211,8 @@ public class MonsterResourceIntTest {
         em.detach(updatedMonster);
         updatedMonster
             .name(UPDATED_NAME)
-            .pageNo(UPDATED_PAGE_NO);
+            .pageNo(UPDATED_PAGE_NO)
+            .monsterID(UPDATED_MONSTER_ID);
 
         restMonsterMockMvc.perform(put("/api/monsters")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -199,6 +225,7 @@ public class MonsterResourceIntTest {
         Monster testMonster = monsterList.get(monsterList.size() - 1);
         assertThat(testMonster.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testMonster.getPageNo()).isEqualTo(UPDATED_PAGE_NO);
+        assertThat(testMonster.getMonsterID()).isEqualTo(UPDATED_MONSTER_ID);
     }
 
     @Test

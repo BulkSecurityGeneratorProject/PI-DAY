@@ -97,6 +97,7 @@
                             return {
                                 name: null,
                                 pageNo: null,
+                                monsterID: null,
                                 id: null
                             };
                         }
