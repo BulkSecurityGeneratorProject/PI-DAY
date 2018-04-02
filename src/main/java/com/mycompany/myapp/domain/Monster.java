@@ -31,6 +31,20 @@ public class Monster implements Serializable {
     @Column(name = "monster_id", nullable = false)
     private Integer monsterID;
 
+    @Column(name = "challenge")
+    private Float challenge;
+
+    @Min(value = 0)
+    @Max(value = 11)
+    @Column(name = "environment")
+    private Integer environment;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "jhi_size")
+    private String size;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -78,6 +92,58 @@ public class Monster implements Serializable {
     public void setMonsterID(Integer monsterID) {
         this.monsterID = monsterID;
     }
+
+    public Float getChallenge() {
+        return challenge;
+    }
+
+    public Monster challenge(Float challenge) {
+        this.challenge = challenge;
+        return this;
+    }
+
+    public void setChallenge(Float challenge) {
+        this.challenge = challenge;
+    }
+
+    public Integer getEnvironment() {
+        return environment;
+    }
+
+    public Monster environment(Integer environment) {
+        this.environment = environment;
+        return this;
+    }
+
+    public void setEnvironment(Integer environment) {
+        this.environment = environment;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Monster description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public Monster size(String size) {
+        this.size = size;
+        return this;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -107,6 +173,10 @@ public class Monster implements Serializable {
             ", name='" + getName() + "'" +
             ", pageNo=" + getPageNo() +
             ", monsterID=" + getMonsterID() +
+            ", challenge=" + getChallenge() +
+            ", environment=" + getEnvironment() +
+            ", description='" + getDescription() + "'" +
+            ", size='" + getSize() + "'" +
             "}";
     }
 }

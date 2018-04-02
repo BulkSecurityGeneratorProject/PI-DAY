@@ -16,6 +16,28 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "challenge",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "environment",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "min",
+                "max"
+            ],
+            "fieldValidateRulesMin": "0",
+            "fieldValidateRulesMax": "11"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "size",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20180314222310",

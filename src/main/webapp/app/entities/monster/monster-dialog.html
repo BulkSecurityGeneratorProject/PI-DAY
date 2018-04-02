@@ -41,6 +41,44 @@
                 </p>
             </div>
         </div>
+        <div class="form-group">
+            <label class="control-label" for="field_challenge">Challenge</label>
+            <input type="number" class="form-control" name="challenge" id="field_challenge"
+                    ng-model="vm.monster.challenge"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_environment">Environment</label>
+            <input type="number" class="form-control" name="environment" id="field_environment"
+                    ng-model="vm.monster.environment"
+                    min="0" max="11"/>
+            <div ng-show="editForm.environment.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.environment.$error.min" translate-value-min="0">
+                    This field should be at least 0.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.environment.$error.max">
+                    This field cannot be more than 11.
+                </p>
+                <p class="help-block"
+                    ng-show="editForm.environment.$error.number">
+                    This field should be a number.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                    ng-model="vm.monster.description"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_size">Size</label>
+            <input type="text" class="form-control" name="size" id="field_size"
+                    ng-model="vm.monster.size"
+                    />
+        </div>
 
     </div>
     <div class="modal-footer">
