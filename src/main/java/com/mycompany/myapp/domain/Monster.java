@@ -2,10 +2,11 @@ package com.mycompany.myapp.domain;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
+
+import com.mycompany.myapp.domain.enumeration.Environ;
 
 /**
  * A Monster.
@@ -27,23 +28,18 @@ public class Monster implements Serializable {
     @Column(name = "page_no")
     private Integer pageNo;
 
-    @NotNull
-    @Column(name = "monster_id", nullable = false)
-    private Integer monsterID;
-
     @Column(name = "challenge")
     private Float challenge;
-
-    @Min(value = 0)
-    @Max(value = 11)
-    @Column(name = "environment")
-    private Integer environment;
 
     @Column(name = "description")
     private String description;
 
     @Column(name = "jhi_size")
     private String size;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "environment")
+    private Environ environment;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -80,19 +76,6 @@ public class Monster implements Serializable {
         this.pageNo = pageNo;
     }
 
-    public Integer getMonsterID() {
-        return monsterID;
-    }
-
-    public Monster monsterID(Integer monsterID) {
-        this.monsterID = monsterID;
-        return this;
-    }
-
-    public void setMonsterID(Integer monsterID) {
-        this.monsterID = monsterID;
-    }
-
     public Float getChallenge() {
         return challenge;
     }
@@ -104,19 +87,6 @@ public class Monster implements Serializable {
 
     public void setChallenge(Float challenge) {
         this.challenge = challenge;
-    }
-
-    public Integer getEnvironment() {
-        return environment;
-    }
-
-    public Monster environment(Integer environment) {
-        this.environment = environment;
-        return this;
-    }
-
-    public void setEnvironment(Integer environment) {
-        this.environment = environment;
     }
 
     public String getDescription() {
@@ -143,6 +113,19 @@ public class Monster implements Serializable {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public Environ getEnvironment() {
+        return environment;
+    }
+
+    public Monster environment(Environ environment) {
+        this.environment = environment;
+        return this;
+    }
+
+    public void setEnvironment(Environ environment) {
+        this.environment = environment;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -172,11 +155,10 @@ public class Monster implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", pageNo=" + getPageNo() +
-            ", monsterID=" + getMonsterID() +
             ", challenge=" + getChallenge() +
-            ", environment=" + getEnvironment() +
             ", description='" + getDescription() + "'" +
             ", size='" + getSize() + "'" +
+            ", environment='" + getEnvironment() + "'" +
             "}";
     }
 }

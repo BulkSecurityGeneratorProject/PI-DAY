@@ -1,5 +1,5 @@
 
-<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
@@ -26,46 +26,10 @@
                     />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_monsterID">Monster ID</label>
-            <input type="number" class="form-control" name="monsterID" id="field_monsterID"
-                    ng-model="vm.monster.monsterID"
-                    required/>
-            <div ng-show="editForm.monsterID.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.monsterID.$error.required">
-                    This field is required.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.monsterID.$error.number">
-                    This field should be a number.
-                </p>
-            </div>
-        </div>
-        <div class="form-group">
             <label class="control-label" for="field_challenge">Challenge</label>
             <input type="number" class="form-control" name="challenge" id="field_challenge"
                     ng-model="vm.monster.challenge"
                     />
-        </div>
-        <div class="form-group">
-            <label class="control-label" for="field_environment">Environment</label>
-            <input type="number" class="form-control" name="environment" id="field_environment"
-                    ng-model="vm.monster.environment"
-                    min="0" max="11"/>
-            <div ng-show="editForm.environment.$invalid">
-                <p class="help-block"
-                    ng-show="editForm.environment.$error.min" translate-value-min="0">
-                    This field should be at least 0.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.environment.$error.max">
-                    This field cannot be more than 11.
-                </p>
-                <p class="help-block"
-                    ng-show="editForm.environment.$error.number">
-                    This field should be a number.
-                </p>
-            </div>
         </div>
         <div class="form-group">
             <label class="control-label" for="field_description">Description</label>
@@ -78,6 +42,23 @@
             <input type="text" class="form-control" name="size" id="field_size"
                     ng-model="vm.monster.size"
                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_environment">Environment</label>
+            <select class="form-control" name="environment" ng-model="vm.monster.environment" id="field_environment">
+                <option value="plains">plains</option>
+                <option value="forest">forest</option>
+                <option value="hills">hills</option>
+                <option value="mountains">mountains</option>
+                <option value="marsh">marsh</option>
+                <option value="desert">desert</option>
+                <option value="underground">underground</option>
+                <option value="aquatic">aquatic</option>
+                <option value="underdark">underdark</option>
+                <option value="abyss">abyss</option>
+                <option value="ninehells">ninehells</option>
+                <option value="gehenna">gehenna</option>
+            </select>
         </div>
 
     </div>

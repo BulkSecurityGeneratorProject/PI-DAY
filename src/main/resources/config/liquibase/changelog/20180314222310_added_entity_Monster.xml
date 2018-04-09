@@ -29,6 +29,22 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="challenge" type="${floatType}">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="jhi_size" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="environment" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         

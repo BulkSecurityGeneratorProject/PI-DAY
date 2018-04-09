@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -44,7 +43,7 @@ public class MonsterResource {
      */
     @PostMapping("/monsters")
     @Timed
-    public ResponseEntity<Monster> createMonster(@Valid @RequestBody Monster monster) throws URISyntaxException {
+    public ResponseEntity<Monster> createMonster(@RequestBody Monster monster) throws URISyntaxException {
         log.debug("REST request to save Monster : {}", monster);
         if (monster.getId() != null) {
             throw new BadRequestAlertException("A new monster cannot already have an ID", ENTITY_NAME, "idexists");
@@ -66,7 +65,7 @@ public class MonsterResource {
      */
     @PutMapping("/monsters")
     @Timed
-    public ResponseEntity<Monster> updateMonster(@Valid @RequestBody Monster monster) throws URISyntaxException {
+    public ResponseEntity<Monster> updateMonster(@RequestBody Monster monster) throws URISyntaxException {
         log.debug("REST request to update Monster : {}", monster);
         if (monster.getId() == null) {
             return createMonster(monster);

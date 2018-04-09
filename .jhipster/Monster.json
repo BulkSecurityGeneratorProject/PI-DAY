@@ -11,25 +11,8 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "monsterID",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "challenge",
             "fieldType": "Float"
-        },
-        {
-            "fieldName": "environment",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "min",
-                "max"
-            ],
-            "fieldValidateRulesMin": "0",
-            "fieldValidateRulesMax": "11"
         },
         {
             "fieldName": "description",
@@ -38,6 +21,11 @@
         {
             "fieldName": "size",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "environment",
+            "fieldType": "Environ",
+            "fieldValues": "plains, forest, hills, mountains, marsh, desert, underground, aquatic, underdark, abyss, nine hells, gehenna"
         }
     ],
     "changelogDate": "20180314222310",
