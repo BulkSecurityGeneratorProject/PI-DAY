@@ -19,13 +19,13 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "size",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "environment",
             "fieldType": "Environ",
-            "fieldValues": "plains, forest, hills, mountains, marsh, desert, underground, aquatic, underdark, abyss, nine hells, gehenna"
+            "fieldValues": "plains, forest, hills, mountains, marsh, desert, underground, aquatic, underdark, abyss, ninehells, gehenna"
+        },
+        {
+            "fieldName": "monsterSize",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20180314222310",

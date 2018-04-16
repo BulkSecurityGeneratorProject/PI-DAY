@@ -99,8 +99,8 @@
                                 pageNo: null,
                                 challenge: null,
                                 description: null,
-                                size: null,
                                 environment: null,
+                                monsterSize: null,
                                 id: null
                             };
                         }

@@ -34,12 +34,12 @@ public class Monster implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "jhi_size")
-    private String size;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "environment")
     private Environ environment;
+
+    @Column(name = "monster_size")
+    private String monsterSize;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -102,19 +102,6 @@ public class Monster implements Serializable {
         this.description = description;
     }
 
-    public String getSize() {
-        return size;
-    }
-
-    public Monster size(String size) {
-        this.size = size;
-        return this;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
     public Environ getEnvironment() {
         return environment;
     }
@@ -126,6 +113,19 @@ public class Monster implements Serializable {
 
     public void setEnvironment(Environ environment) {
         this.environment = environment;
+    }
+
+    public String getMonsterSize() {
+        return monsterSize;
+    }
+
+    public Monster monsterSize(String monsterSize) {
+        this.monsterSize = monsterSize;
+        return this;
+    }
+
+    public void setMonsterSize(String monsterSize) {
+        this.monsterSize = monsterSize;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -157,8 +157,8 @@ public class Monster implements Serializable {
             ", pageNo=" + getPageNo() +
             ", challenge=" + getChallenge() +
             ", description='" + getDescription() + "'" +
-            ", size='" + getSize() + "'" +
             ", environment='" + getEnvironment() + "'" +
+            ", monsterSize='" + getMonsterSize() + "'" +
             "}";
     }
 }

@@ -52,11 +52,11 @@ public class MonsterResourceIntTest {
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_SIZE = "AAAAAAAAAA";
-    private static final String UPDATED_SIZE = "BBBBBBBBBB";
-
     private static final Environ DEFAULT_ENVIRONMENT = Environ.plains;
     private static final Environ UPDATED_ENVIRONMENT = Environ.forest;
+
+    private static final String DEFAULT_MONSTER_SIZE = "AAAAAAAAAA";
+    private static final String UPDATED_MONSTER_SIZE = "BBBBBBBBBB";
 
     @Autowired
     private MonsterRepository monsterRepository;
@@ -103,8 +103,8 @@ public class MonsterResourceIntTest {
             .pageNo(DEFAULT_PAGE_NO)
             .challenge(DEFAULT_CHALLENGE)
             .description(DEFAULT_DESCRIPTION)
-            .size(DEFAULT_SIZE)
-            .environment(DEFAULT_ENVIRONMENT);
+            .environment(DEFAULT_ENVIRONMENT)
+            .monsterSize(DEFAULT_MONSTER_SIZE);
         return monster;
     }
 
@@ -132,8 +132,8 @@ public class MonsterResourceIntTest {
         assertThat(testMonster.getPageNo()).isEqualTo(DEFAULT_PAGE_NO);
         assertThat(testMonster.getChallenge()).isEqualTo(DEFAULT_CHALLENGE);
         assertThat(testMonster.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testMonster.getSize()).isEqualTo(DEFAULT_SIZE);
         assertThat(testMonster.getEnvironment()).isEqualTo(DEFAULT_ENVIRONMENT);
+        assertThat(testMonster.getMonsterSize()).isEqualTo(DEFAULT_MONSTER_SIZE);
     }
 
     @Test
@@ -170,8 +170,8 @@ public class MonsterResourceIntTest {
             .andExpect(jsonPath("$.[*].pageNo").value(hasItem(DEFAULT_PAGE_NO)))
             .andExpect(jsonPath("$.[*].challenge").value(hasItem(DEFAULT_CHALLENGE.doubleValue())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].size").value(hasItem(DEFAULT_SIZE.toString())))
-            .andExpect(jsonPath("$.[*].environment").value(hasItem(DEFAULT_ENVIRONMENT.toString())));
+            .andExpect(jsonPath("$.[*].environment").value(hasItem(DEFAULT_ENVIRONMENT.toString())))
+            .andExpect(jsonPath("$.[*].monsterSize").value(hasItem(DEFAULT_MONSTER_SIZE.toString())));
     }
 
     @Test
@@ -189,8 +189,8 @@ public class MonsterResourceIntTest {
             .andExpect(jsonPath("$.pageNo").value(DEFAULT_PAGE_NO))
             .andExpect(jsonPath("$.challenge").value(DEFAULT_CHALLENGE.doubleValue()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.size").value(DEFAULT_SIZE.toString()))
-            .andExpect(jsonPath("$.environment").value(DEFAULT_ENVIRONMENT.toString()));
+            .andExpect(jsonPath("$.environment").value(DEFAULT_ENVIRONMENT.toString()))
+            .andExpect(jsonPath("$.monsterSize").value(DEFAULT_MONSTER_SIZE.toString()));
     }
 
     @Test
@@ -218,8 +218,8 @@ public class MonsterResourceIntTest {
             .pageNo(UPDATED_PAGE_NO)
             .challenge(UPDATED_CHALLENGE)
             .description(UPDATED_DESCRIPTION)
-            .size(UPDATED_SIZE)
-            .environment(UPDATED_ENVIRONMENT);
+            .environment(UPDATED_ENVIRONMENT)
+            .monsterSize(UPDATED_MONSTER_SIZE);
 
         restMonsterMockMvc.perform(put("/api/monsters")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -234,8 +234,8 @@ public class MonsterResourceIntTest {
         assertThat(testMonster.getPageNo()).isEqualTo(UPDATED_PAGE_NO);
         assertThat(testMonster.getChallenge()).isEqualTo(UPDATED_CHALLENGE);
         assertThat(testMonster.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testMonster.getSize()).isEqualTo(UPDATED_SIZE);
         assertThat(testMonster.getEnvironment()).isEqualTo(UPDATED_ENVIRONMENT);
+        assertThat(testMonster.getMonsterSize()).isEqualTo(UPDATED_MONSTER_SIZE);
     }
 
     @Test
