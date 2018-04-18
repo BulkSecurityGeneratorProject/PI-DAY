@@ -38,12 +38,6 @@
                     />
         </div>
         <div class="form-group">
-            <label class="control-label" for="field_size">Size</label>
-            <input type="text" class="form-control" name="size" id="field_size"
-                    ng-model="vm.monster.size"
-                    />
-        </div>
-        <div class="form-group">
             <label class="control-label" for="field_environment">Environment</label>
             <select class="form-control" name="environment" ng-model="vm.monster.environment" id="field_environment">
                 <option value="plains">plains</option>
@@ -59,6 +53,12 @@
                 <option value="ninehells">ninehells</option>
                 <option value="gehenna">gehenna</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_monsterSize">Monster Size</label>
+            <input type="text" class="form-control" name="monsterSize" id="field_monsterSize"
+                    ng-model="vm.monster.monsterSize"
+                    />
         </div>
 
     </div>
