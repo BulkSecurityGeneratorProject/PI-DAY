@@ -27,7 +27,14 @@
         });
 
         getAccount();
+	loadAll();
 
+        function loadAll() {
+            Monster.query(function(result) {
+                vm.monsters = result;
+                vm.searchQuery = null;
+            });
+        }
         function getAccount() {
             Principal.identity().then(function(account) {
                 vm.account = account;

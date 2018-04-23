@@ -3,7 +3,7 @@
 
         <h1>Welcome, click on either the Quick Encounter Creator or the Advanced Encounter to get started</h1>
         <button ng-click="vm.quickEncounter()" type="button">Quick Encounter</button>
-        <button ui-sref="" type="button">Advanced Encounter</button>
+        <button ui-sref="{{goto || false}}" type="button">Advanced Encounter</button>
     </div>
     <div class="monsterCards">
         <h3>Here's your encounter so far...</h3>
