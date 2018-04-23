@@ -14,6 +14,7 @@
         vm.isAuthenticated = null;
         vm.login = LoginService.open;
         vm.register = register;
+        vm.quickEncounter = quickEncounter;
         vm.monsters = [];
         vm.selectedMonsters = [];
 //        vm.initiative = [];
@@ -39,7 +40,7 @@
         function quickEncounter ()
         {
             for (var i = 0; i < vm.monsters.length; i++)
-            {  
+            {
                 switch (userLevel){//need to check the actual name of this variable
                 	case "1-4":
                 	if (vm.monsters[i].challenge <= 4)
@@ -47,21 +48,21 @@
                     	vm.selectedMonsters.push(vm.monsters[i]);
                     }
                     break;
-                    
+
                     case "5-10":
                 	if (vm.monsters[i].challenge >= 5 && vm.monsters[i].challenge <= 10)
                     {
                     	vm.selectedMonsters.push(vm.monsters[i]);
                     }
                     break;
-                    
+
                     case "11-16":
                 	if (vm.monsters[i].challenge >= 11 && vm.monsters[i].challenge <= 16)
                     {
                     	vm.selectedMonsters.push(vm.monsters[i]);
                     }
                     break;
-                    
+
                     case "17-20":
                 	if (vm.monsters[i].challenge >= 17 && vm.monsters[i].challenge <= 20)
                     {
