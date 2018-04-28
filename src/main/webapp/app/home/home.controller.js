@@ -17,10 +17,14 @@
         vm.quickEncounter = quickEncounter;
         vm.advancedEncounter = advancedEncounter;
         vm.monsters = [];
-        vm.inputEnvironment = 'plains';
-        vm.userLevel = 1;
+        vm.inputEnvironment = 'Default';
+        vm.userLevel = 0;
         vm.selectedMonsters = [];
-       
+        vm.tempMonsters = [];
+        vm.advancedUserLevel = 0;
+        vm.advancedUserNumber = 0;
+        vm.notEnoughMonsters = false;
+
 //        vm.initiative = [];
         $scope.$on('authenticationSuccess', function() {
             getAccount();
@@ -46,82 +50,102 @@
         }
         function randomizeMonsters()
         {
-            vm.selectedMonsters.sort(function(a,b){return 0.5 - Math.random();});
+            vm.tempMonsters.sort(function(a,b){return 0.5 - Math.random();});
         }
         function quickEncounter ()
         {
+            vm.selectedMonsters = [];
             for (var i = 0; i < vm.monsters.length; i++)
             {
-                switch (userLevel){//need to check the actual name of this variable
+                switch (vm.userLevel){//need to check the actual name of this variable
                 	case "1-4":
                 	if (vm.monsters[i].challenge <= 4)
                     {
-                    	vm.selectedMonsters.push(vm.monsters[i]);
+                    	vm.tempMonsters.push(vm.monsters[i]);
                     }
                     break;
 
                     case "5-10":
                 	if (vm.monsters[i].challenge >= 5 && vm.monsters[i].challenge <= 10)
                     {
-                    	vm.selectedMonsters.push(vm.monsters[i]);
+                    	vm.tempMonsters.push(vm.monsters[i]);
                     }
                     break;
 
                     case "11-16":
                 	if (vm.monsters[i].challenge >= 11 && vm.monsters[i].challenge <= 16)
                     {
-                    	vm.selectedMonsters.push(vm.monsters[i]);
+                    	vm.tempMonsters.push(vm.monsters[i]);
                     }
                     break;
 
                     case "17-20":
                 	if (vm.monsters[i].challenge >= 17 && vm.monsters[i].challenge <= 20)
                     {
-                    	vm.selectedMonsters.push(vm.monsters[i]);
+                    	vm.tempMonsters.push(vm.monsters[i]);
                     }
                     break;
                 }
             }
             randomizeMonsters();
+            for(var i=0; i<3;i++)
+            {
+                vm.selectedMonsters.push(vm.tempMonsters[i]);
+            }
         }
         function advancedEncounter ()
         {
+            vm.selectedMonsters = [];
+            vm.tempMonsters = [];
             for (var i = 0; i < vm.monsters.length; i++)
             {
-                if (vm.monsters[i].environment === inputEnvironment)
+                if (vm.monsters[i].environment === vm.inputEnvironment)
                 {
-                    switch (userLevel){//need to check the actual name of this variable
+                    switch (vm.advancedUserLevel){//need to check the actual name of this variable
                 	case "1-4":
                 	if (vm.monsters[i].challenge <= 4)
                         {
-                            vm.selectedMonsters.push(vm.monsters[i]);
+                            vm.tempMonsters.push(vm.monsters[i]);
                         }
                     break;
 
                     case "5-10":
                 	if (vm.monsters[i].challenge >= 5 && vm.monsters[i].challenge <= 10)
                         {
-                            vm.selectedMonsters.push(vm.monsters[i]);
+                            vm.tempMonsters.push(vm.monsters[i]);
                         }
                     break;
 
                     case "11-16":
                 	if (vm.monsters[i].challenge >= 11 && vm.monsters[i].challenge <= 16)
                         {
-                        	vm.selectedMonsters.push(vm.monsters[i]);
+                        	vm.tempMonsters.push(vm.monsters[i]);
                         }
                     break;
 
                     case "17-20":
                     if (vm.monsters[i].challenge >= 17 && vm.monsters[i].challenge <= 20)
                         {
-                            vm.selectedMonsters.push(vm.monsters[i]);
+                            vm.tempMonsters.push(vm.monsters[i]);
                         }
                     break;
-                    } 
+                    }
                 }
             }
             randomizeMonsters();
+            console.log(vm.tempMonsters);
+            if(vm.tempMonsters.length < vm.advancedUserNumber)
+            {
+                vm.notEnoughMonsters = true;
+            }
+            else {
+                for(var i=0;i<vm.advancedUserNumber;i++)
+                {
+                    vm.selectedMonsters.push(vm.tempMonsters[i]);
+                }
+                vm.notEnoughMonsters= false;
+            }
+            console.log(vm.selectedMonsters);
         }
 //        function addPlayerInitiative()
 //        {

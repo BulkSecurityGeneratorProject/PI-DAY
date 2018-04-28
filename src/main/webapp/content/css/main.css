@@ -1,5 +1,5 @@
 body {
-    background: #fafafa;
+    background: #fffcf7;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
@@ -9,42 +9,6 @@ Hide ng-cloak on page load, https://docs.angularjs.org/api/ng/directive/ngCloak
 ========================================================================== */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
-}
-
-/* ==========================================================================
-Development Ribbon
-========================================================================== */
-.ribbon {
-    background-color: #a00;
-    box-shadow: 0 0 10px #888;
-    left: -3.5em;
-    moz-box-shadow: 0 0 10px #888;
-    moz-transform: rotate(-45deg);
-    ms-transform: rotate(-45deg);
-    o-transform: rotate(-45deg);
-    overflow: hidden;
-    position: absolute;
-    top: 40px;
-    transform: rotate(-45deg);
-    webkit-box-shadow: 0 0 10px #888;
-    webkit-transform: rotate(-45deg);
-    white-space: nowrap;
-    width: 15em;
-    z-index: 9999;
-    pointer-events: none;
-}
-
-.ribbon a {
-    border: 1px solid #faa;
-    color: #fff;
-    display: block;
-    font: bold 81.25% 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    margin: 1px 0;
-    padding: 10px 50px;
-    text-align: center;
-    text-decoration: none;
-    text-shadow: 0 0 5px #444;
-    pointer-events: none;
 }
 
 /* ==========================================================================
@@ -63,16 +27,6 @@ navbar text
 }
 
 /* ==========================================================================
-Browser Upgrade Prompt
-========================================================================== */
-.browserupgrade {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
-}
-
-/* ==========================================================================
 Logo styles
 ========================================================================== */
 .navbar-brand.logo {
@@ -87,29 +41,19 @@ Logo styles
 /* ==========================================================================
 Main page styles
 ========================================================================== */
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
-}
 
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+.monsterCards {
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
 }
-
-.hipster {
-    display: inline-block;
-    width: 347px;
-    height: 497px;
-    background: url("../images/hipster.png") no-repeat center top;
-    background-size: contain;
+.monsterCard {
+    border:1px solid #c1bba4;
+    display:block;
+    max-width:33%;
+    flex-grow:1;
+    padding-left:5px;
+    text-align:center;
 }
 
 /* wait autoprefixer update to allow simple generation of high pixel density media query */

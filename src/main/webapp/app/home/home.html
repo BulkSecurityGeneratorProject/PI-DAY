@@ -1,25 +1,82 @@
 <div ng-switch="vm.isAuthenticated()">
     <div ng-switch-when="true">
 
-        <h1>Welcome, click on either the Quick Encounter Creator or the Advanced Encounter to get started</h1>
-        <button ng-click="vm.quickEncounter()" type="button">Quick Encounter</button>
-        <button ui-sref="{{goto || false}}" type="button">Advanced Encounter</button>
-    </div>
-    <div class="monsterCards">
-        <h3>Here's your encounter so far...</h3>
-        <div ng-repeat="monster in vm.selectedMonsters" class="monsterCard">
-            <h2>{{monster.name}}</h2>
-            <dl>
-                <dt>Page of Manual</dt>
-                <dd>{{monster.pageNo}}</dd>
-                <dt>Description</dt>
-                <dd>{{monster.description}}</dd>
-                <dt>Size</dt>
-                <dd>{{monster.monsterSize}}</dd>
-                <dt>Challenge Rating</dt>
-                <dd>{{monster.challenge}}</dd>
-            </dl>
+        <h1>Welcome to the Encounter Creator</h1>
+        <h2>Quick Encounter Instructions</h2>
+        <ol>
+            <li>Enter in your players' level</li>
+            <li>Press the Quick Encounter Button</li>
+        </ol>
+        <p>This will give you three randomly selected monsters with challenge ratings that your victims-sorry, I mean party, can handle</p>
+        <div class="form-group">
+            <label class="control-label" for="quick_challenge">Players' Level</label>
+            <select class="form-control" name="challenge" ng-model="vm.userLevel" id="quick_challenge">
+                <option value="1-4">1-4</option>
+                <option value="5-10">5-10</option>
+                <option value="11-16">11-16</option>
+                <option value="17-20">17-20</option>
+            </select>
         </div>
+        <button ng-click="vm.quickEncounter()" type="button">Quick Encounter</button>
+            <h2>Advanced Encounter Instructions</h2>
+        <ol>
+            <li>Enter in your players' level</li>
+            <li>Enter in the environment you want your monsters from</li>
+            <li>Enter in the number of monsters you want</li>
+            <li>Press the Advanced Encounter Button</li>
+        </ol>
+        <div class="form-group">
+            <label class="control-label" for="advanced_challenge">Players' Level</label>
+            <select class="form-control" name="challenge" ng-model="vm.advancedUserLevel" id="advanced_challenge">
+                <option value="1-4">1-4</option>
+                <option value="5-10">5-10</option>
+                <option value="11-16">11-16</option>
+                <option value="17-20">17-20</option>
+            </select>
+        </div>
+            <div class="form-group">
+                <label class="control-label" for="field_environment">Environment</label>
+                <select class="form-control" name="environment" ng-model="vm.inputEnvironment" id="field_environment">
+                    <option value="plains">Plains</option>
+                    <option value="forest">Forest</option>
+                    <option value="hills">Hills</option>
+                    <option value="mountains">Mountains</option>
+                    <option value="marsh">Marsh</option>
+                    <option value="desert">Desert</option>
+                    <option value="underground">Underground</option>
+                    <option value="aquatic">Aquatic</option>
+                    <option value="underdark">Underdark</option>
+                    <option value="abyss">Abyss</option>
+                    <option value="ninehells">Nine-Hells</option>
+                    <option value="gehenna">Gehenna</option>
+                </select>
+            </div>
+        <div class="form-group">
+            <label class="control-label" for="monster_number">Number of Monsters</label>
+            <input type="number" class="form-control" name="challenge" id="monster_number"
+                   ng-model="vm.advancedUserNumber"
+            />
+        </div>
+        <button ng-click="vm.advancedEncounter()" ng-disabled="vm.advancedUserLevel == 0 || vm.inputEnvironment =='Default' || vm.advancedUserNumber == 0" type="button">Advanced Encounter</button>
+    </div>
+    <div ng-switch="vm.notEnoughMonsters">
+    <div ng-switch-when="true">
+        <h3>I'm sorry, there aren't enough monsters in our database for your advanced encounter, please change an input and try again</h3>
+    </div>
+    <div ng-switch-when="false">
+        <h3>Here's your encounter so far...</h3>
+        <div class="monsterCards">
+        <div class="monsterCard" ng-repeat="monster in vm.selectedMonsters track by monster.id">
+            <h4>{{monster.name}}</h4>
+            <p>Page Number: {{monster.pageNo}}</p>
+            <p>Environment: {{monster.environment}}</p>
+            <p>Challenge Rating: {{monster.challenge}}</p>
+            <p>Size: {{monster.monster_size}}</p>
+            <p>Description: {{monster.description}}</p>
+
+        </div>
+        </div>
+    </div>
     </div>
     <div class="alert alert-warning" ng-switch-when="false">
         If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
